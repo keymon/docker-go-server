@@ -4,12 +4,14 @@ This repository contains a Dockerfile for containerizing ThoughtWorks' [Go](http
 
 ## Usage
 
-To run one or more agents, repeat the following command to launch as many as you need:
+Without persistence:
 
-    docker run -d --name go-server -p 8153:80 patforna/go-server
+    docker run -d --name go-server patforna/go-server
+
+With [data container]("https://github.com/patforna/docker-go-data"):
+
+    docker run -d --name go-server  --volumes-from go-data patforna/go-server
 
 ## Building from scratch
 
-To build the image from scratch, execute the command below (replace 14.1.0 with new version):
-
-    docker build -t patforna/go-server:14.1.0 .
+    docker build -t patforna/go-server .
